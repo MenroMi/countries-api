@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    dataLayer: Record<string, any>[];
+  }
+}
+
 // components
 import {Box} from '../UI';
 
@@ -23,6 +29,12 @@ const Card = ({
   return (
     <Link
       to={`/${name.toLowerCase()}`}
+      onClick={() => {
+        window.dataLayer.push({
+          event: 'country_data',
+          country: {capital, name, population, region},
+        });
+      }}
       {...props}
       className="flex flex-col bg-white dark:bg-elems-dark shadow-md rounded-md overflow-hidden hover:shadow-xl dark:hover:shadow-2xl transition cursor-pointer group"
     >

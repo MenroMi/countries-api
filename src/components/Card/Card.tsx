@@ -29,7 +29,7 @@ const Card = ({
   return (
     <Link
       to={`/${name.toLowerCase()}`}
-      onClick={() => {
+      onMouseEnter={() => {
         window.dataLayer.push({
           event: 'country_data',
           country: {capital, name, population, region},
